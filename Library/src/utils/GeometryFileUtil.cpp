@@ -24,6 +24,8 @@
 //
 
 #include "utils/GeometryFileUtil.h"
+#include "utils/GLTFLoader.h"
+#include "filesystem"
 
 #include <algorithm>
 #include "core/SimulationApp.h"
@@ -34,13 +36,22 @@ namespace sf
 
 Mesh* LoadGeometryFromFile(const std::string& path, GLfloat scale)
 {
-    std::string extension = path.substr(path.length()-3,3);
-    Mesh* mesh = nullptr;
-    
-    if(extension == "stl" || extension == "STL")
+    std::filesystem::path filePath = path;
+    std::string extension = filePath.extension();
+    Mesh *mesh = nullptr;
+
+    if (extension == ".stl" || extension == ".STL")
         mesh = LoadSTL(path, scale);
-    else if(extension == "obj" || extension == "OBJ")
+    else if (extension == ".obj" || extension == ".OBJ")
         mesh = LoadOBJ(path, scale);
+    else if (extension == ".gltf" || extension == ".GLTF")
+    {
+        mesh = LoadGLTF(path, scale);
+        std::cout << "mesh faces" << mesh->faces.size() << "\n";
+        std::cout << "mesh vertices " << mesh->getNumOfVertices() << "\n";
+        std::cout << "mesh textureable" << mesh->isTexturable() << "\n";
+    }
+
     else
         cError("Unsupported geometry file type: %s!", extension.c_str());
     
