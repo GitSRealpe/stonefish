@@ -33,8 +33,13 @@
 namespace sf
 {
     //! An enum defining types of comms.
-    enum class CommType {RADIO, ACOUSTIC, USBL, VLC};
-    
+    enum class CommType
+    {
+        RADIO,
+        ACOUSTIC,
+        USBL
+    };
+
     struct Renderable;
     class Entity;
     class StaticEntity;
