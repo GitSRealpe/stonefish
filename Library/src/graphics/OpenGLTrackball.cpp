@@ -205,7 +205,12 @@ void OpenGLTrackball::DrawSelection(const std::vector<Renderable>& r, GLuint des
         return;
 
     OpenGLContent* content = ((GraphicalSimulationApp*)SimulationApp::getApp())->getGLPipeline()->getContent();
-    
+
+    for (size_t i = 0; i < r.size(); ++i)
+    {
+        if (r[i].type == RenderableType::SOLID)
+            content->DrawCoordSystem(r[i].model, 0.25f);
+    }
     //1. Draw flat shape to color and stencil buffer
     OpenGLState::BindFramebuffer(getRenderFBO());
     SetRenderBuffers(0, false, false);
