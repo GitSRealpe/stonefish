@@ -208,7 +208,7 @@ void OpenGLTrackball::DrawSelection(const std::vector<Renderable>& r, GLuint des
 
     for (size_t i = 0; i < r.size(); ++i)
     {
-        if (r[i].type == RenderableType::SOLID)
+        if (r[i].type == RenderableType::SOLID_CS)
             content->DrawCoordSystem(r[i].model, 0.25f);
     }
     //1. Draw flat shape to color and stencil buffer
