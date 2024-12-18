@@ -33,6 +33,7 @@
 #include "graphics/OpenGLState.h"
 #include "graphics/OpenGLRealOcean.h"
 
+#include "irrKlang/irrKlang.h"
 namespace sf
 {
 
@@ -211,7 +212,12 @@ void OpenGLTrackball::DrawSelection(const std::vector<Renderable>& r, GLuint des
         if (r[i].type == RenderableType::SOLID)
             content->DrawCoordSystem(r[i].model, 0.25f);
     }
-    //1. Draw flat shape to color and stencil buffer
+
+    // irrklang::ISoundEngine *engine = irrklang::createIrrKlangDevice();
+    // irrklang::ISound *music = engine->play2D("/usr/local/share/Stonefish/shaders/metal.wav");
+    // engine->isCurrentlyPlaying(music->getSoundSource());
+
+    // 1. Draw flat shape to color and stencil buffer
     OpenGLState::BindFramebuffer(getRenderFBO());
     SetRenderBuffers(0, false, false);
     OpenGLState::EnableStencilTest();
