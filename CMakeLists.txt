@@ -24,6 +24,11 @@ find_package(SDL2 REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(OpenMP REQUIRED)
 
+# Specify paths for IrrKlang
+set(IRRKLANG_DIR "${CMAKE_SOURCE_DIR}/3rdparty/irrKlang")
+set(IRRKLANG_INCLUDE_DIR "${IRRKLANG_DIR}")
+set(IRRKLANG_LIB_DIR "${IRRKLANG_DIR}")
+
 # Generate C++ code from all resource files (optional)
 set(RESOURCES) # This variable stores array of generated resource files
 if(EMBED_RESOURCES)
@@ -84,8 +89,13 @@ else()
         ${SOURCES_3RD} 
         ${RESOURCES}
     )
+    message("${IRRKLANG_LIB_DIR}")
     target_link_libraries(Stonefish PUBLIC
         ${LIBRARIES}
+        ${IRRKLANG_LIB_DIR}/libIrrKlang.so
+    )
+    set_target_properties(Stonefish PROPERTIES
+    BUILD_RPATH "${IRRKLANG_LIB_DIR}"
     )
     target_include_directories(Stonefish PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Library/include>"
