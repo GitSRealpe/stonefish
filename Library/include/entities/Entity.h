@@ -77,7 +77,10 @@ namespace sf
         
         //! A method returning the name of the entity.
         std::string getName() const;
-        
+
+        //! A method to set the name of the entity.
+        void setName(std::string name);
+
         //! A method returning the type of the entity.
         virtual EntityType getType() const = 0;
         

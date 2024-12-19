@@ -58,5 +58,10 @@ std::string Entity::getName() const
 {
     return name;
 }
-        
+
+void Entity::setName(std::string newname)
+{
+    SimulationApp::getApp()->getSimulationManager()->getNameManager()->RemoveName(name);
+    name = SimulationApp::getApp()->getSimulationManager()->getNameManager()->AddName(newname);
+}
 }
