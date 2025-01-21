@@ -215,6 +215,7 @@ void OpenGLTrackball::DrawSelection(const std::vector<Renderable>& r, GLuint des
 
     // irrklang::ISoundEngine *engine = irrklang::createIrrKlangDevice();
     // irrklang::ISound *music = engine->play2D("/usr/local/share/Stonefish/shaders/metal.wav");
+    // dont uncomment the next line
     // engine->isCurrentlyPlaying(music->getSoundSource());
 
     // 1. Draw flat shape to color and stencil buffer
