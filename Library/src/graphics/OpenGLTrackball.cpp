@@ -213,6 +213,8 @@ void OpenGLTrackball::DrawSelection(const std::vector<Renderable>& r, GLuint des
             content->DrawCoordSystem(r[i].model, 0.25f);
     }
 
+    glDrawElements(GL_LINE_LOOP, 4, GL_UNSIGNED_SHORT, 0);
+
     // irrklang::ISoundEngine *engine = irrklang::createIrrKlangDevice();
     // irrklang::ISound *music = engine->play2D("/usr/local/share/Stonefish/shaders/metal.wav");
     // dont uncomment the next line
